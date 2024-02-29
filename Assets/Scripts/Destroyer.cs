@@ -15,12 +15,12 @@ public class Destroyer : MonoBehaviour
     {
 
 
-        yield return new WaitForSeconds(60);
-        Debug.Log("Dest");
+        yield return new WaitForSeconds(110);
+        
         if (parentName == "Ground(Clone)")
         {
             Destroy(gameObject);
-            Debug.Log("est");
+           
         }
     }
 }

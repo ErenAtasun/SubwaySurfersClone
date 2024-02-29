@@ -22,7 +22,7 @@ public class ObjectPool : MonoBehaviour
         groNum = Random.Range(0, 5);
         Instantiate(ground[groNum], new Vector3(0, 0, zPos), Quaternion.identity);
         zPos += 50;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         creatingGround = false;
     }
 

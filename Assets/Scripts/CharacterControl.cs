@@ -16,6 +16,7 @@ public class CharacterControl : MonoBehaviour
     private CharacterController m_char;
     private Animator anim;
     private float x;
+
     public float DodgeSpeed;
     public float JumpPower=7f;
     private float y;
@@ -24,24 +25,33 @@ public class CharacterControl : MonoBehaviour
     public float ForwardSpeed = 5f;
     private float ColHeight;
     private float ColCenterY;
+    public float AccelerationRate = 0.5f;
+    public float MaxForwardSpeed = 10;
+
+    
 
     void Start()
     {
         m_char = GetComponent<CharacterController>();
         ColHeight = m_char.height;
         ColCenterY = m_char.center.y;
-        Vector3 newPosition = new Vector3(0f, 1f, -20f);
+        Vector3 newPosition = new Vector3(0f, 0f, -51f);
         transform.position = newPosition;
         anim = GetComponent<Animator>();
+
+        
     }
 
     void Update()
     {
-        SwipeLeft = Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.RightArrow);
-        SwipeRight = Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.LeftArrow);
+        SwipeLeft = Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
+        SwipeRight = Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
         SwipeUp= Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
         SwipeDown = Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow);
-        
+
+        ForwardSpeed += AccelerationRate * Time.deltaTime;
+        ForwardSpeed = Mathf.Min(ForwardSpeed, MaxForwardSpeed);
+
         if (SwipeLeft&& !InRoll)
         {
             if (m_Side == SIDE.Mid)
@@ -72,7 +82,7 @@ public class CharacterControl : MonoBehaviour
                 anim.Play("dodgeRight");
             }
         }
-        Vector3 moveVector = new Vector3(x - transform.position.x, y*Time.deltaTime, ForwardSpeed*Time.deltaTime);
+        Vector3 moveVector = new Vector3(x - transform.position.x, y * Time.deltaTime, ForwardSpeed * Time.deltaTime);
         x = Mathf.Lerp(x, NewXPos, Time.deltaTime * DodgeSpeed);
         m_char.Move(moveVector);
         Jump();

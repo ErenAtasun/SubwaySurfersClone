@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class CollactableControl : MonoBehaviour
 {
-    public  static int coinCount;
-    public GameObject coinCountDisplay;
+  
+
 
     void Update()
     {
