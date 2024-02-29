@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class ObstacleMove : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float moveSpeed = 5f; // Karakterin hareket hýzý
+    public GameObject characterPrefab;
 
-    // Update is called once per frame
     void Update()
     {
-        
+       
+        transform.Translate(Vector3.forward *- moveSpeed * Time.deltaTime);
+        Quaternion spawnRotation = Quaternion.Euler(0f, 180f, 0f);
     }
 }
