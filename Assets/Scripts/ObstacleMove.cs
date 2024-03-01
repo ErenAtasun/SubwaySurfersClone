@@ -10,7 +10,7 @@ public class ObstacleMove : MonoBehaviour
     void Update()
     {
        
-        transform.Translate(Vector3.forward *- moveSpeed * Time.deltaTime);
-        Quaternion spawnRotation = Quaternion.Euler(0f, 180f, 0f);
+        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
+        
     }
 }

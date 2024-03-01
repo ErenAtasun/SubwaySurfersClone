@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class ObstacleCollision : MonoBehaviour
 {
     public int maxHealth = 3; 
+    public static int lives = 3;
 
     public GameManager gameManager;
 
@@ -28,7 +31,7 @@ public class ObstacleCollision : MonoBehaviour
     void TakeDamage()
     {
         currentHealth--;
-        Debug.Log("Hit!");
+        lives--;
         animator.Play("JoggingStumble"); 
 
         if (currentHealth <= 0) 

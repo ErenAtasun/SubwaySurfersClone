@@ -12,14 +12,17 @@ public class CollectCoin : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI highScoreText;
 
+    public Color highScoreColor = Color.green;
+    Color defaultScoreColor;
+
     void Start()
     {
         score = 0;
         scoreText.text = score.ToString();
         highScore = PlayerPrefs.GetInt("highscore");
-        highScoreText.text = highScore.ToString(); 
-        
+        highScoreText.text = highScore.ToString();
 
+        defaultScoreColor = scoreText.color;
     }
     void FixedUpdate()
     {
@@ -47,6 +50,12 @@ public class CollectCoin : MonoBehaviour
             highScore = score;
             highScoreText.text = highScore.ToString();
             PlayerPrefs.SetInt("highscore", highScore);
+            scoreText.color = highScoreColor;
+        }
+        else
+        {
+            // Restore the default color of the score text
+            scoreText.color = defaultScoreColor;
         }
     }
 }

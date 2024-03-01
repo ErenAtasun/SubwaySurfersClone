@@ -23,8 +23,10 @@ public class Spawner : MonoBehaviour
     void SpawnObstacle()
     {
         Vector3 position = new Vector3(Random.Range(-fieldWidth / 2f, fieldWidth / 2f), Random.Range(yMin, yMax), transform.position.z);
-        GameObject newObstacle = Instantiate(ObstaclePrefab, position, Quaternion.identity);
-        Quaternion spawnRotation = Quaternion.Euler(0f, 180f, 0f);
+        
+        Quaternion rotation = Quaternion.Euler(0f, 180f, 0f); // Y ekseninde 180 derece rotasyon
+        GameObject newObstacle = Instantiate(ObstaclePrefab, position, rotation);
+        Destroy(newObstacle, 10f);
     }
 
     
