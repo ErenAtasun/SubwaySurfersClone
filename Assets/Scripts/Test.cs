@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    public float delay = 2f; // Objeyi yok etme gecikmesi (saniye cinsinden)
+    public float delay = 2f; 
 
     private void OnTriggerEnter(Collider other)
     {
-        // Karakter nesneye temas ettiðinde kontrol et
+        
         if (other.gameObject.tag == "Player")
         {
-            // Nesneyi 2 saniye sonra yok et
-            Destroy(other.gameObject);
+            
+            Destroy(this.gameObject);
         }
     }
 }

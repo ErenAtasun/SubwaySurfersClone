@@ -32,6 +32,8 @@ public class CharacterControl : MonoBehaviour
 
     void Start()
     {
+
+
         m_char = GetComponent<CharacterController>();
         ColHeight = m_char.height;
         ColCenterY = m_char.center.y;
@@ -42,7 +44,7 @@ public class CharacterControl : MonoBehaviour
         
     }
 
-    void Update()
+    void Update()   
     {
         SwipeLeft = Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
         SwipeRight = Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
@@ -126,7 +128,7 @@ public class CharacterControl : MonoBehaviour
 
         if (SwipeDown)
         {
-            RollCounter = 0.2f;
+            RollCounter = 0.9f;
             y -= 10f;
             m_char.center = new Vector3(0, ColCenterY/2f, 0);
             m_char.height = ColHeight/2f;
