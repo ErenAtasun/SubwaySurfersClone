@@ -49,7 +49,7 @@ public class CollectCoin : MonoBehaviour
             highScore = score;
             highScoreText.text = highScore.ToString();
             PlayerPrefs.SetInt("highscore", highScore);
-            New.SetActive(true);
+            
         }
     }
 }

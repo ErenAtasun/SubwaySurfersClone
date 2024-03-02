@@ -25,7 +25,7 @@ public class CharacterControl : MonoBehaviour
     public float ForwardSpeed = 5f;
     private float ColHeight;
     private float ColCenterY;
-    public float AccelerationRate = 0.5f;
+    public float AccelerationRate = 0.6f;
     public float MaxForwardSpeed = 10;
 
     

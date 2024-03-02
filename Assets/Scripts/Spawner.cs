@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject ObstaclePrefab; // Oluþturulacak engel prefabý
+    public GameObject ObstaclePrefab; 
 
-    public float fieldWidth = 10f; // Engellerin oluþturulacaðý alanýn geniþliði
-    public float yMin = 1f; // Engellerin en altta olabileceði yükseklik
-    public float yMax = 3f; // Engellerin en üstte olabileceði yükseklik
+    public float fieldWidth = 10f; 
+    public float yMin = 1f; 
+    public float yMax = 3f; 
 
-    public int obstacleNum = 10; // Oluþturulacak engel sayýsý
-    public float spawnInterval = 1f; // Engeller arasýndaki zaman aralýðý
+    public int obstacleNum = 10; 
+    public float spawnInterval = 1f; 
 
 
     void Start()
@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour
     {
         Vector3 position = new Vector3(Random.Range(-fieldWidth / 2f, fieldWidth / 2f), Random.Range(yMin, yMax), transform.position.z);
         
-        Quaternion rotation = Quaternion.Euler(0f, 180f, 0f); // Y ekseninde 180 derece rotasyon
+        Quaternion rotation = Quaternion.Euler(0f, 180f, 0f); 
         GameObject newObstacle = Instantiate(ObstaclePrefab, position, rotation);
         Destroy(newObstacle, 10f);
     }

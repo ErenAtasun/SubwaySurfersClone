@@ -9,13 +9,13 @@ public class FallowCam : MonoBehaviour
     public Vector3 distance;
     public Transform lookTarget;
 
-    // Start is called before the first frame update
+    
     void Start()
     {
 
     }
 
-    // Update is called once per frame
+    
     void LateUpdate()
     {
         Vector3 dPos = cameraTarget.position + distance;

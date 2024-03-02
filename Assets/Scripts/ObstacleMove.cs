@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObstacleMove : MonoBehaviour
 {
-    public float moveSpeed = 5f; // Karakterin hareket hýzý
+    public float moveSpeed = 5f; 
     public GameObject characterPrefab;
 
     void Update()

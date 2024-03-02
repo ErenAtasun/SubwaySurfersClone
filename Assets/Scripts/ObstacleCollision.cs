@@ -12,12 +12,16 @@ public class ObstacleCollision : MonoBehaviour
     public GameManager gameManager;
 
     private int currentHealth; 
-    private Animator animator; 
+    private Animator animator;
+
+    private bool canInteract = true;
+    public float interactionCooldown = 3f;
 
     void Start()
     {
         currentHealth = maxHealth; 
         animator = GetComponent<Animator>(); 
+
     }
 
     void OnTriggerEnter(Collider other)
@@ -30,14 +34,25 @@ public class ObstacleCollision : MonoBehaviour
 
     void TakeDamage()
     {
-        currentHealth--;
-        lives--;
-        animator.Play("JoggingStumble"); 
-
-        if (currentHealth <= 0) 
+        if (canInteract)
         {
-            Die(); 
+            currentHealth--;
+            lives--;
+            animator.Play("JoggingStumble");
+
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
+
+            StartCoroutine(DisableInteractionForCooldown());
         }
+    }
+    IEnumerator DisableInteractionForCooldown()
+    {
+        canInteract = false;
+        yield return new WaitForSeconds(interactionCooldown);
+        canInteract = true;
     }
 
     void Die()
@@ -46,7 +61,7 @@ public class ObstacleCollision : MonoBehaviour
 
 
         gameManager.GameOver();
-        Destroy(gameObject);
+        //Destroy(gameObject);
 
     }
 }
